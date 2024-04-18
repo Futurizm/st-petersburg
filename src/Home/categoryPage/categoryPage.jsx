@@ -34,7 +34,7 @@ const CategoryPage = () => {
 
   const [fetching, isDataLoading, dataError] = useFetch(async () => {
     const response = await axios.get(
-        `https://spbneformal.fun/api/getUser?uid=1295257412`
+        `https://spbneformal.fun/api/getUser?uid=${window?.Telegram?.WebApp?.initDataUnsafe?.user?.id}`
     );
     setBase(response.data || {});
     return response;

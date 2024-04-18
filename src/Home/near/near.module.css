@@ -67,8 +67,8 @@
 
 .cards {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-column-gap: 16px;
+    grid-template-columns: repeat(2, minmax(160px, 1fr));
+    column-gap: 16px;
     /* height: 200px; */
 }
 .dzhigi{
@@ -79,7 +79,6 @@
 }
 .card {
     position: relative;
-
     display: flex;
     flex-direction: column;
     /* align-items: flex-start; */
@@ -91,6 +90,8 @@
     border-radius: 16px;
     /* height: 220px; */
 }
+
+
 
 @media (min-width: 390px) {
     .asd {
@@ -110,11 +111,8 @@
     }
 }
 
-@media (min-width: 425px) {
-    .asd {
-        height: 225px;
-    }
-}
+
+
 
 
 .mainLike {
@@ -148,17 +146,12 @@
     font-size: 10px;
     color: white;
 }
-/* .posd {
 
-  width: 35px;
-  font-size: 10px;
-  font-weight: 700;
-  line-height: 16px;
-  letter-spacing: 0em;
-  text-align: center;
-  color: white;
-
-} */
+@media (max-width: 385px) {
+    .position {
+        font-size: 9px;
+    }
+}
 
 .mainText {
     /* margin-top: 8px; */
@@ -189,9 +182,22 @@
     line-height: 20px;
 }
 
-@media screen and (max-width: 340px) {
+.extra__information {
+    display: flex;
+    justify-content: space-between;
+    margin-right: 20px;
+}
+
+
+@media screen and (max-width: 370px) {
     .cards {
         grid-template-columns: repeat(1, 1fr);
+    }
+
+    .extra__information {
+        gap: 0px;
+        justify-content: space-between;
+        margin-right: 20px;
     }
 
     .asd {

@@ -32,7 +32,7 @@ const SortedPosts = ({ setSortState,sortState, fId, categoryId, categoryTitle })
 
     const [fetching, isDataLoadingPupsik, errorPupsik] = useFetchPupsik(async () => {
         const response = await axios.get(
-            `https://spbneformal.fun/api/getUser?uid=1295257412`
+            `https://spbneformal.fun/api/getUser?uid=${window?.Telegram?.WebApp?.initDataUnsafe?.user?.id}`
         );
         console.log(response)
         setDatas(response.data || {});
@@ -70,7 +70,7 @@ const SortedPosts = ({ setSortState,sortState, fId, categoryId, categoryTitle })
             }
 
             const response = await axios.get(
-                `https://spbneformal.fun/api/like?uid=1295257412&postId=${postId}`
+                `https://spbneformal.fun/api/like?uid=${window?.Telegram?.WebApp?.initDataUnsafe?.user?.id}&postId=${postId}`
             );
 
             if (response.data.success) {

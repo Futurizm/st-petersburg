@@ -104,7 +104,7 @@ const Near = () => {
     const fetching = async () => {
         try {
             const response = await axios.get(
-                `https://spbneformal.fun/api/getNearPlaces?populate=category,category.image&uid=1295257412&category=${selectedCategory}`
+                `https://spbneformal.fun/api/getNearPlaces?populate=category,category.image&uid=${window?.Telegram?.WebApp?.initDataUnsafe?.user?.id}&category=${selectedCategory}`
             );
             setData(response.data.posts || []);
         } catch (error) {
@@ -158,7 +158,7 @@ const Near = () => {
 
     const [fetchingPupsik, isDataLoadingPupsik, errorPupsik] = useFetchPupsik(async () => {
         const response = await axios.get(
-            `https://spbneformal.fun/api/getUser?uid=1295257412`
+            `https://spbneformal.fun/api/getUser?uid=${window?.Telegram?.WebApp?.initDataUnsafe?.user?.id}`
         );
         console.log(response);
         setDatas(response.data || {});
@@ -173,7 +173,7 @@ const Near = () => {
             }
 
             const response = await axios.get(
-                `https://spbneformal.fun/api/like?uid=1295257412&postId=${postId}`
+                `https://spbneformal.fun/api/like?uid=${window?.Telegram?.WebApp?.initDataUnsafe?.user?.id}&postId=${postId}`
             );
 
             if (response.data.success) {
@@ -205,16 +205,14 @@ const Near = () => {
     return (
         <div>
             <header className={cl.header}>
-                <Link to="/">
                     <div className={`${cl.header__container} ${cl._container}`}>
-                        <a href="#" className={cl.header__icon}>
+                        <Link to="/" className={cl.header__icon}>
                             <img src={arrowLeft} alt="" />
-                        </a>
-                        <a href="#" className={`${cl.header__icon} ${cl.mod}`}>
+                        </Link>
+                        <Link to="/" className={`${cl.header__icon} ${cl.mod}`}>
                             <img src={home} alt="" />
-                        </a>
+                        </Link>
                     </div>
-                </Link>
             </header>
 
             <div className={cl.main}>
@@ -265,9 +263,12 @@ const Near = () => {
                                      src={(datas?.user?.liked || []).some(item => item.id === post.id) ? yellow_heart : heart}
                                      alt=""/>
                             </button>
-                            <div className={cl.position}>{(Number(post.distance) / 1000).toFixed(1)} км</div>
+                            <div className={cl.extra__information}>
+                                <div className={cl.position}>{(Number(post.distance) / 1000).toFixed(1)} км</div>
+                                <div className={cl.position}>ПРОМОКОД</div>
+                            </div>
                             <div className={cl.mainMatin}>
-                                <p className={cl.mainText}>{post.subcategory?.title ? post.subcategory?.title : post.category?.title}</p>
+                            <p className={cl.mainText}>{post.subcategory?.title ? post.subcategory?.title : post.category?.title}</p>
                                 <p className={cl.mainSub}>{post.title}</p>
                             </div>
                         </div>

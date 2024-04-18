@@ -39,7 +39,7 @@ const Page3 = () => {
   const [fetchingPupsik, isDataLoadingPupsik, errorPupsik] = useFetchPupsik(
     async () => {
       const response = await axios.get(
-        `https://spbneformal.fun/api/getUser?uid=1295257412`
+        `https://spbneformal.fun/api/getUser?uid=${window?.Telegram?.WebApp?.initDataUnsafe?.user?.id}`
       );
       console.log(response);
       setDatas(response.data || {});
@@ -71,7 +71,7 @@ const Page3 = () => {
       }
 
       const response = await axios.get(
-        `https://spbneformal.fun/api/like?uid=1295257412&postId=${postId}`
+        `https://spbneformal.fun/api/like?uid=${window?.Telegram?.WebApp?.initDataUnsafe?.user?.id}&postId=${postId}`
       );
 
       if (response.data.success) {
@@ -239,7 +239,13 @@ const Page3 = () => {
     .filter((post) => post.id !== localData[0]?.id);
   console.log("Length of slicedData:", slicedData?.length);
 
-  const [swiper, setSwiper] = useState();
+  const [swiper, setSwiper] = useState(null);
+
+  useEffect(() => {
+    if (swiper) {
+      swiper.slideTo(0); // Reset to the first slide
+    }
+  }, [postId, swiper]);
   
   console.log(localData)
 
