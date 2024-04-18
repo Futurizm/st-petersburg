@@ -22,6 +22,7 @@ import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Navigation, Pagination } from "swiper/modules";
+import pizza from "./img/Pizza.svg"
 
 const Page3 = () => {
   const { search } = useLocation();
@@ -360,6 +361,12 @@ const Page3 = () => {
                           )}
                         </div>
                         <h1 className={cl.title}>{post?.attributes?.title}</h1>
+                        <div className={cl.gift__block}>
+                          <div className={cl.gift__block__container}>
+                            <img src={pizza} alt=""/>
+                            <p className={cl.gift__block__paragraph}>Бокал игристого на завтрак с 10:00 до 12:00 в подарок</p>
+                          </div>
+                        </div>
                         {post?.attributes?.content && (
                             <div className={cl.text}>
                               {post.attributes.content
@@ -380,6 +387,12 @@ const Page3 = () => {
                               </div>
                             </div>
                         )}
+
+                        <div className={cl.contacts}>
+                          <p className={cl.contacts__title}>Контакты</p>
+                          <a href="#" className={cl.contacts__number}>+ 7 921 346 26 73</a>
+                        </div>
+
                         {post?.attributes?.additionalInfo && (
                             <div className={cl.more}>
                               <div>

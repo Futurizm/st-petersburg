@@ -172,9 +172,34 @@ body{
   line-height: 24px;
   /* height: 350px; */
   width: 100%;
-
-
 }
+
+.gift__block {
+  border: 1px solid #e1e1e1;
+  border-radius: 20px;
+  margin-bottom: 15px;
+}
+
+.gift__block__container img {
+  height: 30px;
+  width: 30px;
+}
+
+.gift__block__container {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px;
+}
+
+.gift__block__paragraph {
+  font-family: Inter;
+  font-size: 15px;
+  color: #454243;
+  font-weight: 400;
+  line-height: 20px;
+}
+
 .time{
   /* height: 52px; */
   margin-bottom: 16px;
@@ -198,6 +223,7 @@ body{
   font-style: normal;
   font-weight: 700;
   line-height: 20px;
+  margin-bottom: 5px;
 }
 .day{
   color: #454243;
@@ -243,6 +269,27 @@ body{
   border-radius: 36px;
   background-color: #fff;
   margin-top: -52px;
+}
+
+.contacts {
+  margin-bottom: 16px;
+}
+
+.contacts__title {
+  color: #454243;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 20px;
+  margin-bottom: 5px;
+}
+
+.contacts__number {
+  color: #e76767;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
 }
 
 .qwe{
