@@ -314,24 +314,26 @@ const Input = () => {
                         alt=""
                     />
                   </button>
-                  <Link to={`/searchPage/previewPage/${result.id}?categoryId=${result?.attributes?.category?.data?.id}`}>
-                    <img
-                        src={`https://spbneformal.fun${result.attributes.images.data[0].attributes.url}`}
-                        alt={result.attributes.title}
-                        className={cl.searchResultPhoto}
-                    />
-                  </Link>
-                  <p className={cl.searchResultSubtitle}>
-                    {result?.attributes?.subsubcategory.data?.attributes?.title
-                        ? result?.attributes?.subsubcategory?.data?.attributes?.title
-                        : result?.attributes?.subcategory.data?.attributes?.title
-                            ? result?.attributes?.subcategory?.data?.attributes?.title
-                            : result?.attributes?.category?.data?.attributes?.title
-                    }
-                  </p>
-                  <p className={cl.searchResultTitle}>
-                    {result?.attributes?.title}
-                  </p>
+                  <div className={cl.text__container}>
+                    <Link to={`/searchPage/previewPage/${result.id}?categoryId=${result?.attributes?.category?.data?.id}`}>
+                      <img
+                          src={`https://uploads.spbneformal.fun${result.attributes.images.data[0].attributes.url}`}
+                          alt={result.attributes.title}
+                          className={cl.searchResultPhoto}
+                      />
+                    </Link>
+                    <p className={cl.searchResultSubtitle}>
+                      {result?.attributes?.subsubcategory.data?.attributes?.title
+                          ? result?.attributes?.subsubcategory?.data?.attributes?.title
+                          : result?.attributes?.subcategory.data?.attributes?.title
+                              ? result?.attributes?.subcategory?.data?.attributes?.title
+                              : result?.attributes?.category?.data?.attributes?.title
+                      }
+                    </p>
+                    <p className={cl.searchResultTitle}>
+                      {result?.attributes?.title}
+                    </p>
+                  </div>
                 </div>
             ))}
           </div>

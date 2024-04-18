@@ -80,7 +80,7 @@ const SubPlaces = ({ subcategoryId, activeCategory }) => {
                     >
                         <img
                             className={cl.button__image}
-                            src={`https://spbneformal.fun${item?.attributes?.image.data?.attributes?.url}`}
+                            src={`https://uploads.spbneformal.fun${item?.attributes?.image.data?.attributes?.url}`}
                             alt={`Изображение ${index}`}
                         />
                         {item?.attributes?.title}

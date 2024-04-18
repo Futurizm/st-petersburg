@@ -173,7 +173,7 @@ const SortedPosts = ({ setSortState,sortState, fId, categoryId, categoryTitle })
                         <div className={`${cl.food__column}`} key={post.id}>
                             <div>
                                 <Link to={`/page2/previewPage/${post.id}?categoryId=${fId}`}>
-                                    <img className={cl.kaban} src={`https://spbneformal.fun${post.attributes.images.data[0].attributes.url}`} alt="" />
+                                    <img className={cl.kaban} src={`https://uploads.spbneformal.fun${post.attributes.images.data[0].attributes.url}`} alt="" />
                                 </Link>
                             </div>
                             <button onClick={() => handleButtonClick(post.id, post.id)} className={`${cl.main_like}`}>

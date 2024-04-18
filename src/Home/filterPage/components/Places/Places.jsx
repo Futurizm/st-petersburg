@@ -68,7 +68,7 @@ const Places = ({ selectedSubcategory, activeCategory, onSubcategorySelect }) =>
                             >
                                 <img
                                     className={cl.button__image}
-                                    src={`https://spbneformal.fun${subcategory?.attributes?.image?.data?.attributes?.url}`}
+                                    src={`https://uploads.spbneformal.fun${subcategory?.attributes?.image?.data?.attributes?.url}`}
                                     alt={`Изображение ${index}`}
                                 />
                                 {subcategory?.attributes?.title}

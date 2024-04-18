@@ -162,7 +162,7 @@ const MyComponent = () => {
                                                         ? { height: 240 }
                                                         : { fontFamily: "Inter" }
                                                 }
-                                                src={`https://spbneformal.fun${
+                                                src={`https://uploads.spbneformal.fun${
                                                     post.attributes.images.data[0].attributes.url
                                                 }`}
                                                 alt=""

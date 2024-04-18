@@ -173,7 +173,7 @@ const Near = () => {
             }
 
             const response = await axios.get(
-                `https://uploads.spbneformal.fun/api/like?uid=1295257412&postId=${postId}`
+                `https://spbneformal.fun/api/like?uid=1295257412&postId=${postId}`
             );
 
             if (response.data.success) {

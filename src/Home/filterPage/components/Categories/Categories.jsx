@@ -246,7 +246,7 @@ const Categories = ({ handleSortState,activeCategory, onCategoryClick, handleFil
                         >
                             <img
                                 className={cl.button__image}
-                                src={`https://spbneformal.fun${button?.attributes?.image?.data?.attributes?.url}`}
+                                src={`https://uploads.spbneformal.fun${button?.attributes?.image?.data?.attributes?.url}`}
                                 alt={`Изображение ${index}`}
                             />
                             {button?.attributes?.title}

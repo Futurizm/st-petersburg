@@ -118,7 +118,7 @@ const Page3 = () => {
 
   const images = localData?.flatMap((post) =>
     post?.attributes?.images?.data.map(
-      (image) => `https://spbneformal.fun${image?.attributes?.url}`
+      (image) => `https://uploads.spbneformal.fun${image?.attributes?.url}`
     )
   );
 
@@ -436,7 +436,7 @@ const Page3 = () => {
                             >
                               <img
                                   className={cl.asd}
-                                  src={`https://spbneformal.fun${post.attributes.images.data[0].attributes.url}`}
+                                  src={`https://uploads.spbneformal.fun${post.attributes.images.data[0].attributes.url}`}
                                   alt=""
                               />
                             </Link>

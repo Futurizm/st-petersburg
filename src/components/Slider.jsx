@@ -25,7 +25,7 @@ const MyComponent = () => {
                                     <h2 className={cl.slider__text__nt}>{slide.attributes.title}</h2>
                                     <h2 className={cl.slider__text__header}>{slide.attributes.subtitle}</h2>
                                 </div>
-                                <img className={cl.section__slider__img__1} src={`https://spbneformal.fun${slide.attributes.image.data.attributes.url}`} alt=""/>
+                                <img className={cl.section__slider__img__1} src={`https://uploads.spbneformal.fun${slide.attributes.image.data.attributes.url}`} alt=""/>
                             </div>
                             </a>
                         ))}

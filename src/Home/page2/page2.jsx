@@ -201,14 +201,14 @@ const InfoPage = () => {
                             <Link
                                 to={`/page2/${cat.id}`}
                                 key={cat.id}
-                                className={`${cl.tab} ${cl.negr} ${location.pathname.includes(`/page2/${cat.id}`) ? cl.active : ''}`}
+                                className={`${cl.tab} ${cl.box} ${location.pathname.includes(`/page2/${cat.id}`) ? cl.active : ''}`}
                                 onClick={() => handleCategoryClick(cat.id, cat.attributes.title)}
                                 data-category={cat.id}
                             >
 
                               <img
                                   className={cl.button__image}
-                                  src={`https://spbneformal.fun${cat.attributes.image.data.attributes.url}`}
+                                  src={`https://uploads.spbneformal.fun${cat.attributes.image.data.attributes.url}`}
                                   alt=""
                               />
                               <span className={cl.tab__text}>{cat.attributes.title}</span>

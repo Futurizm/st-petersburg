@@ -122,7 +122,7 @@ const Page4 = () => {
 
 
   return (
-      <>
+      <div className={cl.wrapper}>
         {isDataLoading ? (
             <div className={cl.loadingSpinner}>
               <img style={{width: 20}} className={cl.loader} src={sun} alt="Loading"/>
@@ -162,7 +162,7 @@ const Page4 = () => {
                   <Link key={index + 1} to={`page4/previewPage/${like.id}?categoryId=${like?.category?.id}`}>
                     <img
                         key={index}
-                        src={`https://spbneformal.fun${like?.images[0]?.url}`}
+                        src={`https://uploads.spbneformal.fun${like?.images[0]?.url}`}
                         alt=""
                         className={cl.saved_img}
                     />
@@ -204,7 +204,7 @@ const Page4 = () => {
 </>
       )}
 
-</>
+</div>
 );
 };
 

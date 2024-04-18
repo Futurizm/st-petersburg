@@ -55,7 +55,9 @@ table {
 
 
 
-
+.wrapper {
+	overflow-x: hidden;
+}
 
 .profile{
 	display: flex;

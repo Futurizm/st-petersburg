@@ -189,7 +189,7 @@
     line-height: 20px;
 }
 
-@media screen and (max-width: 385px) {
+@media screen and (max-width: 340px) {
     .cards {
         grid-template-columns: repeat(1, 1fr);
     }
