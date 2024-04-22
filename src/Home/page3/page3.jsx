@@ -22,7 +22,7 @@ import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Navigation, Pagination } from "swiper/modules";
-import pizza from "./img/Pizza.svg"
+import loveLetter from "./img/LoveLetter.svg"
 
 const Page3 = () => {
   const { search } = useLocation();
@@ -30,7 +30,7 @@ const Page3 = () => {
   const [nt, setNt] = useState([]);
 
   const { data, loading, error } = useFetcher(
-    `https://spbneformal.fun/api/categories/${categoryId}?populate=posts,posts.images,posts.category,posts.subcategory,posts.subsubcategory`
+    `https://spbneformal.fun/api/categories/${categoryId}?populate=posts,posts.images,posts.category,posts.subcategory,posts.subsubcategory,posts.button,posts.promoSection,posts.promoSection.image`
   );
 
   console.log(data);
@@ -363,7 +363,7 @@ const Page3 = () => {
                         <h1 className={cl.title}>{post?.attributes?.title}</h1>
                         <div className={cl.gift__block}>
                           <div className={cl.gift__block__container}>
-                            <img src={pizza} alt=""/>
+                            <img src={loveLetter} alt=""/>
                             <p className={cl.gift__block__paragraph}>Бокал игристого на завтрак с 10:00 до 12:00 в подарок</p>
                           </div>
                         </div>

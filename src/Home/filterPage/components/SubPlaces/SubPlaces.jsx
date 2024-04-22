@@ -43,6 +43,13 @@ const SubPlaces = ({ subcategoryId, activeCategory }) => {
     })
 
     useEffect(() => {
+        setGl(null)
+        setData(null)
+        setBb(null)
+        setSelectedButton(null)
+    }, [activeCategory])
+
+    useEffect(() => {
         nt()
     }, []);
 
@@ -51,6 +58,7 @@ const SubPlaces = ({ subcategoryId, activeCategory }) => {
     const handleButtonClick = useCallback((subcategory, index) => {
         setSelectedButton(index);
         setGl(subcategory)
+        localStorage.setItem('selectedSubsubcategory', subcategory)
     }, [dispatch]);
 
     dispatch(setSelectedSubsubcategory(gl))

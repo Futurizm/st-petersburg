@@ -53,9 +53,21 @@ export const setActiveCategory = (categoryId) => ({
     type: 'SET_ACTIVE_CATEGORY',
     payload: categoryId,
 });
+export const setActiveCategoryt = (categoryIdt) => ({
+    type: 'SET_ACTIVE_CATEGORYt',
+    payload: categoryIdt,
+});
+
+export const setActiveCategoryInfoPage = (categoryId) => ({
+    type: 'SET_ACTIVE_CATEGORY_INFO_PAGE',
+    categoryId,
+});
+
 
 const initialState = {
+    categoryIdt: null,
     categories: {},
+    activeCategoryInfoPage: null,
     selectedCategoryId: null,
     categoryTitled: null,
     activeCategory: null,
@@ -75,12 +87,22 @@ const initialState = {
 const rootReducer = (state = initialState, action) => {
 
     switch (action.type) {
+        case 'SET_ACTIVE_CATEGORY_INFO_PAGE':
+            return {
+                ...state,
+                activeCategoryInfoPage: action.categoryId,
+            };
         case 'SET_SELECTED_CATEGORY_ID':
             return {
                 ...state,
                 selectedCategoryId: action.payload,
             };
-            case 'SET_CURRENT_SUBCATEGORY':
+        case 'SET_ACTIVE_CATEGORYt':
+            return {
+                ...state,
+                categoryIdt: action.payload,
+            };
+        case 'SET_CURRENT_SUBCATEGORY':
             return {
                 ...state,
                 currentSubcategoryId: action.payload,

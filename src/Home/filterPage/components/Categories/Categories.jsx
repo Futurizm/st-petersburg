@@ -6,7 +6,7 @@ import { useFetch } from '../../../../components/hooks/useFetchB.js';
 import {useDispatch, useSelector} from "react-redux";
 import {
     resetCategoryTitle,
-    setActiveCategory,
+    setActiveCategory, setActiveCategoryInfoPage,
     setCategoryTitle,
     setCategoryTitled, setCurrentlySelectedCategory,
     setSelectedSubcategory, setSelectedSubsubcategory
@@ -38,6 +38,7 @@ const Categories = ({ handleSortState,activeCategory, onCategoryClick, handleFil
         return response;
     });
     const [loading, setLoading] = useState(true);
+    const activeCategoryInfoPage = useSelector(state => state?.title?.activeCategoryInfoPage);
 
 
     useEffect(() => {
@@ -117,6 +118,7 @@ const Categories = ({ handleSortState,activeCategory, onCategoryClick, handleFil
         localStorage.removeItem('selectedSubcategoryd'); // Изменено на selectedSubcategoryd
     };
     const handleButtonClick = (index, categoryId) => {
+        dispatch(setActiveCategoryInfoPage(categoryId)); // установка активной категории в InfoPage
         dispatch(setSelectedSubcategory(null))
         dispatch(setSelectedSubsubcategory(null))
 
@@ -141,6 +143,8 @@ const Categories = ({ handleSortState,activeCategory, onCategoryClick, handleFil
                 categoryId: clickedCategoryId,
             });
         }
+
+        localStorage.setItem('selectedCategory', categoryId)
 
     };
 
@@ -212,6 +216,16 @@ const Categories = ({ handleSortState,activeCategory, onCategoryClick, handleFil
     const handleClick = (index) => {
         setActiveButtonIndex(index === activeButtonIndex ? null : index);
     };
+
+    useEffect(() => {
+        const selectedCategory = localStorage.getItem('selectedCategory')
+        if (selectedCategory) {
+            setSelectedButton(activeCategoryId - 1)
+        }
+    }, [selectedButton]);
+
+
+
     console.log(currentlySelectedCategory + "suchka")
     return (
         <div className={cl.nt}>

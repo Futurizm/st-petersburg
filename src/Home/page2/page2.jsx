@@ -9,21 +9,23 @@ import FilterPage from '../filterPage/Filter.jsx';
 import SortedPosts from '../../components/SortedPosts.jsx';
 import cl from './page2.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import {setCategoryTitle, setCategoryTitled, setSelectedSubcategory, setSelectedSubsubcategory} from '../../actions.js';
+import {
+  setActiveCategoryt,
+  setCategoryTitle,
+  setCategoryTitled,
+  setSelectedSubcategory,
+  setSelectedSubsubcategory
+} from '../../actions.js';
 import Loader from '../../components/UI/Loader/Loader.jsx';
 
-
 const InfoPage = () => {
-  const { categoryId } = useParams();
+  const location = useLocation();
+
   const dispatch = useDispatch();
   const { activeCategoryId } = useParams();
   const [prevCategories, setPrevCategories] = useState([]);
   const [categoryTitles, setCategoryTitles] = useState({});
   const buttonRef = useRef(null);
-
-
-  console.log("CategoryId " + categoryId)
-
   useEffect(() => {
     if (buttonRef.current) {
       buttonRef.current.click();
@@ -79,19 +81,28 @@ const InfoPage = () => {
   const categoryTitleRedux = useSelector((state) => state?.title?.categories[activeCategory]);
   const [isButtonClicked, setIsButtonClicked] = useState(false);
   const [sortState, setSortState] = useState(false)
+
+  const subcategoryId = useSelector((state) => state?.title?.selectedSubcategory)
+
   const handleSortState = () => {
     setSortState(prevState => !prevState)
   }
+  const [activeCategoryd, setActiveCategoryd] = useState('');
 
+  useEffect(() => {
+    // Получаем активный путь из URL-адреса
+    const activePath = location.pathname.split('/')[2]; // Предполагается, что активный путь находится на второй позиции в URL
+
+    // Устанавливаем активную категорию, если она есть
+    if (activePath) {
+      setActiveCategory(activePath);
+    }
+  }, [location.pathname]);
   const loopClick = () => {
     setShowFilterPage(true);
     document.body.style.overflow = 'hidden';
   };
 
-  useEffect(() => {
-    scrollToActiveCategory();
-
-  }, [activeCategory,categoryId]);
 
   const handleFilterPageClose = () => {
     setShowFilterPage(false);
@@ -148,7 +159,6 @@ const InfoPage = () => {
     localStorage.removeItem('selectedCategoryId');
     localStorage.removeItem('selectedSubcategory');
   };
-
   const handleSelectedCategoryChange = (categoryId) => {
     // Сбросить выбранные подкатегории и подподкатегории
     dispatch(setSelectedSubcategory(null));
@@ -166,14 +176,21 @@ const InfoPage = () => {
   // Сброс значения pizda при размонтировании компонента
 
   console.log(sortState)
-
+  const categoryId = pathParts[pathParts.length - 1];
+  console.log(categoryId + "seks")
+  useEffect(() => {
+    dispatch(setActiveCategoryt(categoryId))
+  }, [categoryId]);
+  useEffect(() => {
+    scrollToActiveCategory();
+  }, [activeCategory,categoryId]);
   return (
       <>
         <div>
           {showFilterPage && (
               <div className={cl.filterPageOverlay}>
                 <div className={cl.modalContainer} onClick={handleFilterPageClose}>
-                  <FilterPage handleSortState={handleSortState} handleFilterPageClose={handleFilterPageClose} />
+                  <FilterPage handleSortState={handleSortState} handleFilterPageClose={handleFilterPageClose} activeCategory={categoryId}  />
                 </div>
               </div>
           )}
@@ -201,7 +218,7 @@ const InfoPage = () => {
                             <Link
                                 to={`/page2/${cat.id}`}
                                 key={cat.id}
-                                className={`${cl.tab} ${cl.box} ${location.pathname.includes(`/page2/${cat.id}`) ? cl.active : ''}`}
+                                className={`${cl.tab} ${location.pathname.includes(`/page2/${cat.id}`) ? cl.active : ''}`}
                                 onClick={() => handleCategoryClick(cat.id, cat.attributes.title)}
                                 data-category={cat.id}
                             >
@@ -211,7 +228,7 @@ const InfoPage = () => {
                                   src={`https://uploads.spbneformal.fun${cat.attributes.image.data.attributes.url}`}
                                   alt=""
                               />
-                              <span className={cl.tab__text}>{cat.attributes.title}</span>
+                              <span className={`${cl.tab__text} ${cl.tab3}`}>{cat.attributes.title}</span>
                             </Link>
                         ))}
                   </ul>

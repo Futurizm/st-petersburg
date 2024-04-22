@@ -169,18 +169,38 @@ const SortedPosts = ({ setSortState,sortState, fId, categoryId, categoryTitle })
                 </div>
             ) : (
                 <div className={`${cl.food__row}`}>
-                    {filterData.slice(0, loadedPostsCount).map((post) => (
-                        <div className={`${cl.food__column}`} key={post.id}>
+                    {filterData.slice(0, loadedPostsCount).map((post, index) => (
+                        <div
+                            key={post.id}
+                            className={`${cl.food__column} ${
+                                index % 5 === 4 ? cl.spanned : ""
+                            }`}
+
+                        style={
+                            index % 5 === 4
+                            ? {height: 200}
+                            : {fontFamily: "Inter"}
+                        }>
                             <div>
                                 <Link to={`/page2/previewPage/${post.id}?categoryId=${fId}`}>
-                                    <img className={cl.kaban} src={`https://uploads.spbneformal.fun${post.attributes.images.data[0].attributes.url}`} alt="" />
+                                    <img className={cl.kaban}  style={
+                                        index % 5 === 4
+                                            ? { height: 200 }
+                                            : { fontFamily: "Inter" }
+                                    } src={`https://uploads.spbneformal.fun${post.attributes.images.data[0].attributes.url}`} alt="" />
                                 </Link>
                             </div>
                             <button onClick={() => handleButtonClick(post.id, post.id)} className={`${cl.main_like}`}>
                                 <img src={(datas?.user?.liked || []).some(item => item.id === post.id) ? yellow_heart : heart} alt="" />
                             </button>
-                            <div className="food__content">
-                                <h2 className={`${cl.food__name}`}>
+                            <div className={`${cl.food__content} ${
+                                index % 5 === 4 ? cl.block__item__text__spanned : ""
+                            }`}>
+                                <h2 className={`${cl.food__name} ${
+                                    index % 5 === 4
+                                        ? cl.block__item__text__spanned__paragraph
+                                        : ""
+                                }`}>
                                     {post?.attributes?.subsubcategory?.data?.attributes?.title
                                         ? post?.attributes?.subsubcategory?.data?.attributes?.title
                                         : post?.attributes?.subcategory?.data?.attributes?.title
@@ -188,7 +208,11 @@ const SortedPosts = ({ setSortState,sortState, fId, categoryId, categoryTitle })
                                             : post?.attributes?.category?.data?.attributes?.title
                                     }
                                 </h2>
-                                <p className={`${cl.food__position}`}>{post.attributes.title}</p>
+                                <p className={`${cl.food__position} ${
+                                    index % 5 === 4
+                                        ? cl.block__item__text__spanned__header
+                                        : ""
+                                }`}>{post.attributes.title}</p>
                             </div>
                         </div>
                     ))}

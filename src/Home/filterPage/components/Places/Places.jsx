@@ -50,11 +50,35 @@ const Places = ({ selectedSubcategory, activeCategory, onSubcategorySelect }) =>
         if (onSubcategorySelect) {
             onSubcategorySelect(subcategory);
         }
+        localStorage.setItem('selectedSubcategory', subcategory)
     };
     useEffect(() => {
         setSelectedButtons({}); // Сбросить выбранные подкатегории при изменении активной категории
     }, [activeCategory]);
+
+
+    useEffect(() => {
+        const storedCategory = localStorage.getItem('selected_Category');
+        if (storedCategory) {
+            setSelectedSubcategoryId(storedCategory);
+        }
+    }, []);
+    // Сохранение выбранной категории в localStorage при изменении
+    useEffect(() => {
+        if (selectedSubcategoryId) {
+            localStorage.setItem('selected_Category', selectedSubcategoryId);
+        }
+    }, [selectedSubcategoryId]);
+        useEffect(() => {
+            const storedButtons = JSON.parse(localStorage.getItem('selectedButtons')) || {};
+            setSelectedButtons(storedButtons);
+        }, []);
+    useEffect(() => {
+        localStorage.setItem('selectedButtons', JSON.stringify(selectedButtons));
+    }, [selectedButtons]);
+
     dispatch(setNegr(selectedSubcategoryId))
+
     return (
         <>
             <div className={cl.button__select}>
@@ -63,7 +87,9 @@ const Places = ({ selectedSubcategory, activeCategory, onSubcategorySelect }) =>
                         data?.data?.attributes?.subcategories?.data.map((subcategory, index) => (
                             <MyUguButton
                                 isRed={selectedButtons[activeCategory] === index}
-                                onClick={() => handleButtonClick(subcategory?.id, index)}
+                                onClick={() => {
+                                    handleButtonClick(subcategory?.id, index);
+                                }}
                                 key={index + 1}
                             >
                                 <img

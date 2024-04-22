@@ -180,6 +180,13 @@ html,body{
 .food__column {
   position: relative;
 }
+
+.spanned {
+  grid-row: span 1;
+  grid-column: span 2;
+  height: 210px;
+}
+
 .food__name {
   margin-top: 8px;
   color: #ABABAB;
@@ -188,7 +195,16 @@ html,body{
   line-height: 16px; /* 160% */
   text-transform: uppercase;
 }
+
+
+
 .food__content {
+}
+
+.block__item__text__spanned {
+  position: absolute;
+  bottom: 10px;
+  left: 20px;
 }
 
 .food__position {
@@ -476,6 +492,15 @@ html,body{
   line-height: 16px; /* 160% */
   text-transform: uppercase;
 }
+
+.block__item__text__spanned__paragraph {
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 16px; /* 160% */
+  text-transform: uppercase;
+  color: #ECECEC;
+}
 .food__content {
 }
 
@@ -488,6 +513,16 @@ html,body{
   font-weight: 700;
   line-height: 20px; /* 142.857% */
 }
+
+.block__item__text__spanned__header {
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 28px; /* 155.556% */
+  text-transform: uppercase;
+  color: #FFF;
+}
+
 .main_like{
   position: absolute;
   padding: 12px;
