@@ -56,16 +56,33 @@ const SubPlaces = ({ subcategoryId, activeCategory }) => {
     console.log(bb?.data)
 
     const handleButtonClick = useCallback((subcategory, index) => {
-        setSelectedButton(index);
+        setSelectedButton(index)
         setGl(subcategory)
         localStorage.setItem('selectedSubsubcategory', subcategory)
-    }, [dispatch]);
+    }, [dispatch])
 
     dispatch(setSelectedSubsubcategory(gl))
 
     const subsubcategories = data?.data?.attributes?.subsubcategories?.data;
+
     useEffect(() => {
-        setSelectedButton(null);
+        const storedCategory = localStorage.getItem('selectedSubsubcategory');
+        if (storedCategory) {
+            setGl(storedCategory);
+        }
+    }, []);
+
+    useEffect(() => {
+        const storedButtons = JSON.parse(localStorage.getItem('selectedSubButton')) || {};
+        setSelectedButton(storedButtons);
+    }, []);
+
+    useEffect(() => {
+            localStorage.setItem('selectedSubButton', JSON.stringify(selectedButton));
+    }, [selectedButton]);
+
+    useEffect(() => {
+        setGl(null)
     }, [subcategoryId, activeCategory, dispatch]);
 
     // Добавьте проверку на существование subsubcategories перед использованием метода map

@@ -361,12 +361,20 @@ const Page3 = () => {
                           )}
                         </div>
                         <h1 className={cl.title}>{post?.attributes?.title}</h1>
-                        <div className={cl.gift__block}>
-                          <div className={cl.gift__block__container}>
-                            <img src={loveLetter} alt=""/>
-                            <p className={cl.gift__block__paragraph}>Бокал игристого на завтрак с 10:00 до 12:00 в подарок</p>
-                          </div>
-                        </div>
+                        {(post?.attributes?.promoSection?.text && post?.attributes?.promoSection?.image?.data?.attributes?.url)
+                            &&
+                            <div className={cl.gift__block}>
+                              <div className={cl.gift__block__container}>
+                                <img
+                                    src={`https://uploads.spbneformal.fun${post?.attributes?.promoSection?.image?.data?.attributes?.url}`}
+                                    alt=""/>
+                                <p className={cl.gift__block__paragraph}>
+                                  {post?.attributes?.promoSection?.text}
+                                </p>
+                              </div>
+                            </div>
+                        }
+
                         {post?.attributes?.content && (
                             <div className={cl.text}>
                               {post.attributes.content
@@ -388,10 +396,13 @@ const Page3 = () => {
                             </div>
                         )}
 
-                        <div className={cl.contacts}>
-                          <p className={cl.contacts__title}>Контакты</p>
-                          <a href="#" className={cl.contacts__number}>+ 7 921 346 26 73</a>
-                        </div>
+                        {post?.attributes?.phone
+                            &&
+                            <div className={cl.contacts}>
+                              <p className={cl.contacts__title}>Контакты</p>
+                              <a href="tel:+7 999 999 9999" className={cl.contacts__number}>{post?.attributes?.phone}</a>
+                            </div>
+                        }
 
                         {post?.attributes?.additionalInfo && (
                             <div className={cl.more}>

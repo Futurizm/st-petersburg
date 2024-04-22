@@ -58,21 +58,17 @@ const Places = ({ selectedSubcategory, activeCategory, onSubcategorySelect }) =>
 
 
     useEffect(() => {
-        const storedCategory = localStorage.getItem('selected_Category');
+        const storedCategory = localStorage.getItem('selectedSubcategory');
         if (storedCategory) {
             setSelectedSubcategoryId(storedCategory);
         }
     }, []);
-    // Сохранение выбранной категории в localStorage при изменении
+
     useEffect(() => {
-        if (selectedSubcategoryId) {
-            localStorage.setItem('selected_Category', selectedSubcategoryId);
-        }
-    }, [selectedSubcategoryId]);
-        useEffect(() => {
-            const storedButtons = JSON.parse(localStorage.getItem('selectedButtons')) || {};
-            setSelectedButtons(storedButtons);
-        }, []);
+        const storedButtons = JSON.parse(localStorage.getItem('selectedButtons')) || {};
+        setSelectedButtons(storedButtons);
+    }, []);
+
     useEffect(() => {
         localStorage.setItem('selectedButtons', JSON.stringify(selectedButtons));
     }, [selectedButtons]);

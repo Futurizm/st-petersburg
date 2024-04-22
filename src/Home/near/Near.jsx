@@ -265,7 +265,7 @@ const Near = () => {
                             </button>
                             <div className={cl.extra__information}>
                                 <div className={cl.position}>{(Number(post.distance) / 1000).toFixed(1)} км</div>
-                                <div className={cl.position}>ПРОМОКОД</div>
+                                { post?.tag ? <div className={cl.position}>{post?.tag}</div> : ''}
                             </div>
                             <div className={cl.mainMatin}>
                             <p className={cl.mainText}>{post.subcategory?.title ? post.subcategory?.title : post.category?.title}</p>

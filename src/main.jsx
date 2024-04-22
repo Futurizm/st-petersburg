@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { createRoot } from 'react-dom';
@@ -15,6 +15,10 @@ import Near from "./Home/near/Near.jsx";
 import {PersistGate} from "redux-persist/integration/react";
 
 const App = () => {
+    useEffect(() => {
+        window?.Telegram?.WebApp?.enableClosingConfirmation()
+    }, []);
+
   return (
         <Provider store={store}>
           <PersistGate loading={null} persistor={persistor}>
