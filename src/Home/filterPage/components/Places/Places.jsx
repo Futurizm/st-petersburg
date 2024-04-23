@@ -7,7 +7,12 @@ import axios from 'axios';
 import MyLine from "../UI/MyLine/MyLine.jsx";
 import SubPlaces from "../SubPlaces/SubPlaces.jsx";
 import { useDispatch } from "react-redux";
-import {setNegr, setSelectedSubcategory} from "../../../../actions.js";
+import {
+    setNegr,
+    setSelectedSubcategory,
+    setSelectedSubsubcategory,
+    setSelectedSubsubcategoryButton
+} from "../../../../actions.js";
 import MyUguButton from "../UI/MyUguButton/MyUguButton.jsx";
 
 // ... (ваш импорт)

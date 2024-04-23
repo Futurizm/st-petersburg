@@ -428,13 +428,16 @@ const Page3 = () => {
                               </div>
                             </div>
                         )}
-                        <a
-                            href={localData[0]?.attributes?.mapUrl}
-                            target="_blank"
-                            className={`${cl.btn_btn} ${cl.btn_btn_extra}`}
-                        >
-                          ЗАБРОНИРОВАТЬ СТОЛ
-                        </a>
+                        {localData[0]?.attributes?.button
+                            &&
+                            <a
+                                href={localData[0]?.attributes?.button?.link}
+                                target="_blank"
+                                className={`${cl.btn_btn} ${cl.btn_btn_extra}`}
+                            >
+                              {localData[0]?.attributes?.button?.text}
+                            </a>
+                        }
                         <a
                             href={localData[0]?.attributes?.mapUrl}
                             target="_blank"

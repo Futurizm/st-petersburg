@@ -28,6 +28,11 @@ export const setSelectedSubsubcategory = (subsubcategory) => ({
     type: 'SET_SELECTED_SUBSUBCATEGORY',
     payload: subsubcategory,
 });
+
+export const setSelectedSubsubcategoryButton = (subsubcategory) => ({
+    type: 'SET_SELECTED_SUBSUBCATEGORY_BUTTON',
+    payload: subsubcategory,
+});
 export const clearSelectedSubcategory = () => ({
     type: 'CLEAR_SELECTED_SUBCATEGORY',
 });
@@ -78,6 +83,7 @@ const initialState = {
     subsubcategory:null,
     currentlySelectedCategory: null,
     negr:null,
+    selectedSubsubcategoryButton: null
 
 };
 
@@ -87,6 +93,11 @@ const initialState = {
 const rootReducer = (state = initialState, action) => {
 
     switch (action.type) {
+        case 'SET_SELECTED_SUBSUBCATEGORY_BUTTON':
+            return {
+                ...state,
+                selectedSubsubcategoryButton: action.payload,
+            };
         case 'SET_ACTIVE_CATEGORY_INFO_PAGE':
             return {
                 ...state,

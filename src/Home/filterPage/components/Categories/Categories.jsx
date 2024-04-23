@@ -9,7 +9,7 @@ import {
     setActiveCategory, setActiveCategoryInfoPage,
     setCategoryTitle,
     setCategoryTitled, setCurrentlySelectedCategory,
-    setSelectedSubcategory, setSelectedSubsubcategory
+    setSelectedSubcategory, setSelectedSubsubcategory, setSelectedSubsubcategoryButton
 } from "../../../../actions.js";
 import Places from "../Places/Places.jsx";
 import MyLine from "../UI/MyLine/MyLine.jsx";
@@ -112,6 +112,10 @@ const Categories = ({ handleSortState,activeCategory, onCategoryClick, handleFil
         setActiveCategoryId(null);
         setSelectedSubcategoryd(null); // Изменено на selectedSubcategoryd
         dispatch(setActiveCategory(null));
+        dispatch(setSelectedSubsubcategory(null))
+        dispatch(setSelectedSubsubcategoryButton(null))
+        localStorage.removeItem('selectedSubButton')
+        localStorage.removeItem('selectedSubsubcategory')
     };
     const clearLocalStorage = () => {
         localStorage.removeItem('selectedCategoryId');

@@ -5,7 +5,12 @@ import cl from './SubPlaces.module.css';
 import MySelectedButton from '../UI/MySelectedButton/MySelectedButton.jsx';
 import { useFetch } from '../../../../components/hooks/useFetchB.js';
 import axios from 'axios';
-import {setSelectedSubcategory, clearSelectedSubcategory, setSelectedSubsubcategory} from '../../../../actions.js';
+import {
+    setSelectedSubcategory,
+    clearSelectedSubcategory,
+    setSelectedSubsubcategory,
+    setSelectedSubsubcategoryButton
+} from '../../../../actions.js';
 
 
 // ... (ваш импорт)
@@ -19,6 +24,8 @@ const SubPlaces = ({ subcategoryId, activeCategory }) => {
     const [data, setData] = useState([]);
     const [bb, setBb] = useState([])
     const dispatch = useDispatch();
+
+    const subsubcategoryButton = useSelector((state) => state?.title?.selectedSubsubcategoryButton)
 
     const fetching = useCallback(async () => {
         if (subcategoryId) {
@@ -47,6 +54,8 @@ const SubPlaces = ({ subcategoryId, activeCategory }) => {
         setData(null)
         setBb(null)
         setSelectedButton(null)
+        dispatch(setSelectedSubsubcategoryButton(null))
+        dispatch(setSelectedSubsubcategory(null))
     }, [activeCategory])
 
     useEffect(() => {
@@ -56,33 +65,33 @@ const SubPlaces = ({ subcategoryId, activeCategory }) => {
     console.log(bb?.data)
 
     const handleButtonClick = useCallback((subcategory, index) => {
-        setSelectedButton(index)
-        setGl(subcategory)
+        dispatch(setSelectedSubsubcategoryButton(index))
+        dispatch(setSelectedSubsubcategory(subcategory))
         localStorage.setItem('selectedSubsubcategory', subcategory)
     }, [dispatch])
 
-    dispatch(setSelectedSubsubcategory(gl))
 
     const subsubcategories = data?.data?.attributes?.subsubcategories?.data;
 
     useEffect(() => {
         const storedCategory = localStorage.getItem('selectedSubsubcategory');
         if (storedCategory) {
-            setGl(storedCategory);
+            dispatch(setSelectedSubsubcategory(storedCategory))
         }
     }, []);
 
     useEffect(() => {
         const storedButtons = JSON.parse(localStorage.getItem('selectedSubButton')) || {};
-        setSelectedButton(storedButtons);
+        dispatch(setSelectedSubsubcategoryButton(storedButtons))
     }, []);
 
     useEffect(() => {
-            localStorage.setItem('selectedSubButton', JSON.stringify(selectedButton));
-    }, [selectedButton]);
+            localStorage.setItem('selectedSubButton', JSON.stringify(subsubcategoryButton));
+    }, [selectedButton, dispatch]);
 
     useEffect(() => {
         setGl(null)
+        dispatch(setSelectedSubsubcategory(null))
     }, [subcategoryId, activeCategory, dispatch]);
 
     // Добавьте проверку на существование subsubcategories перед использованием метода map
@@ -101,7 +110,7 @@ const SubPlaces = ({ subcategoryId, activeCategory }) => {
                     <MySelectedButton
                         key={index}
                         onClick={() => handleButtonClick(item.id, index)}
-                        isRed={selectedButton === index}
+                        isRed={subsubcategoryButton === index}
                     >
                         <img
                             className={cl.button__image}
