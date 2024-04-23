@@ -65,7 +65,7 @@ const SubPlaces = ({ subcategoryId, activeCategory }) => {
     console.log(bb?.data)
 
     const handleButtonClick = useCallback((subcategory, index) => {
-        dispatch(setSelectedSubsubcategoryButton(index))
+        dispatch(setSelectedSubsubcategoryButton(index + 1))
         dispatch(setSelectedSubsubcategory(subcategory))
         localStorage.setItem('selectedSubsubcategory', subcategory)
     }, [dispatch])
@@ -77,7 +77,11 @@ const SubPlaces = ({ subcategoryId, activeCategory }) => {
         const storedCategory = localStorage.getItem('selectedSubsubcategory');
         if (storedCategory) {
             dispatch(setSelectedSubsubcategory(storedCategory))
+        } else {
+            dispatch(setSelectedSubsubcategoryButton(0));
+            dispatch(setSelectedSubsubcategory(subsubcategories[0]?.id));
         }
+
     }, []);
 
     useEffect(() => {
@@ -110,7 +114,7 @@ const SubPlaces = ({ subcategoryId, activeCategory }) => {
                     <MySelectedButton
                         key={index}
                         onClick={() => handleButtonClick(item.id, index)}
-                        isRed={subsubcategoryButton === index}
+                        isRed={subsubcategoryButton === index + 1}
                     >
                         <img
                             className={cl.button__image}

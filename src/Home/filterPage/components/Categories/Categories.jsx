@@ -108,14 +108,12 @@ const Categories = ({ handleSortState,activeCategory, onCategoryClick, handleFil
     };
     const handleResetSelection = () => {
         setActiveButtonIndex(null)
-        setSelectedButton(null);
-        setActiveCategoryId(null);
-        setSelectedSubcategoryd(null); // Изменено на selectedSubcategoryd
-        dispatch(setActiveCategory(null));
+        setSelectedButton(null)
+        setActiveCategoryId(null)
+        setSelectedSubcategoryd(null) // Изменено на selectedSubcategoryd
+        dispatch(setActiveCategory(null))
         dispatch(setSelectedSubsubcategory(null))
         dispatch(setSelectedSubsubcategoryButton(null))
-        localStorage.removeItem('selectedSubButton')
-        localStorage.removeItem('selectedSubsubcategory')
     };
     const clearLocalStorage = () => {
         localStorage.removeItem('selectedCategoryId');
@@ -179,10 +177,6 @@ const Categories = ({ handleSortState,activeCategory, onCategoryClick, handleFil
         setSelectedButton(null);
     }, [data.data, onCategoryClick, initialCategoryId]);
 
-    useEffect(() => {
-        setSelectedButton(null);
-
-    }, [activeCategory]);
 
 
     useEffect(() => {
@@ -190,11 +184,13 @@ const Categories = ({ handleSortState,activeCategory, onCategoryClick, handleFil
             setSelectedCategory(activeCategory);
         }
 
-    }, [activeCategory]);
+    }, [activeCategory])
+
     useEffect(() => {
         setSelectedButton(null);
 
-    }, [activeCategory]);
+    }, [activeCategory])
+
 
     const [sup,setSup] = useState(false);
     useEffect(() => {
