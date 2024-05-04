@@ -114,6 +114,8 @@ const Categories = ({ handleSortState,activeCategory, onCategoryClick, handleFil
         dispatch(setActiveCategory(null))
         dispatch(setSelectedSubsubcategory(null))
         dispatch(setSelectedSubsubcategoryButton(null))
+        localStorage.removeItem('selectedCategory')
+        localStorage.removeItem('selectedSubcategory')
     };
     const clearLocalStorage = () => {
         localStorage.removeItem('selectedCategoryId');
@@ -123,7 +125,6 @@ const Categories = ({ handleSortState,activeCategory, onCategoryClick, handleFil
         dispatch(setActiveCategoryInfoPage(categoryId)); // установка активной категории в InfoPage
         dispatch(setSelectedSubcategory(null))
         dispatch(setSelectedSubsubcategory(null))
-
         dispatch(setActiveCategory(categoryId));
         setSelectedButton(null);
         setActiveCategoryId(null);
@@ -296,4 +297,4 @@ const Categories = ({ handleSortState,activeCategory, onCategoryClick, handleFil
 
 };
 
-export default Categories;
+export default Categories;

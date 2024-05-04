@@ -23,7 +23,7 @@ const Places = ({ selectedSubcategory, activeCategory, onSubcategorySelect }) =>
     const [data, setData] = useState({});
     const [fetching, isDataLoading, dataError] = useFetch(async () => {
         const response = await axios.get(
-            `https://spbneformal.fun/api/categories/${activeCategory}?populate=sub-sub-categories,image,subcategories,subcategories.image,subsubcategories.image`
+         `https://spbneformal.fun/api/categories/${activeCategory}?populate=sub-sub-categories,image,subcategories,subcategories.image,subsubcategories.image`
         );
         setData(response.data || {});
         return response;
@@ -116,4 +116,4 @@ const Places = ({ selectedSubcategory, activeCategory, onSubcategorySelect }) =>
 
 };
 
-export default Places;
+export default Places;
