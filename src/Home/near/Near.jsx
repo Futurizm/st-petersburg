@@ -104,7 +104,7 @@ const Near = () => {
     const fetching = async () => {
         try {
             const response = await axios.get(
-                `https://spbneformal.fun/api/getNearPlaces?populate=category,category.image&uid=${window?.Telegram?.WebApp?.initDataUnsafe?.user?.id}&category=${selectedCategory}`
+                `https://spbneformal.fun/api/getNearPlaces?populate=category,category.image&uid=1295257412&category=${selectedCategory}`
             );
             setData(response.data.posts || []);
         } catch (error) {
@@ -158,7 +158,7 @@ const Near = () => {
 
     const [fetchingPupsik, isDataLoadingPupsik, errorPupsik] = useFetchPupsik(async () => {
         const response = await axios.get(
-            `https://spbneformal.fun/api/getUser?uid=${window?.Telegram?.WebApp?.initDataUnsafe?.user?.id}`
+            `https://spbneformal.fun/api/getUser?uid=1295257412`
         );
         console.log(response);
         setDatas(response.data || {});
@@ -173,7 +173,7 @@ const Near = () => {
             }
 
             const response = await axios.get(
-                `https://spbneformal.fun/api/like?uid=${window?.Telegram?.WebApp?.initDataUnsafe?.user?.id}&postId=${postId}`
+                `https://spbneformal.fun/api/like?uid=1295257412&postId=${postId}`
             );
 
             if (response.data.success) {

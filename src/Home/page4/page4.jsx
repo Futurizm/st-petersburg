@@ -27,7 +27,7 @@ const Page4 = () => {
 
   const [fetchingPupsik, isDataLoadingPupsik, errorPupsik] = useFetchPupsik(async () => {
     const response = await axios.get(
-        `https://spbneformal.fun/api/getUser?uid=${window?.Telegram?.WebApp?.initDataUnsafe?.user?.id}`
+        `https://spbneformal.fun/api/getUser?uid=1295257412`
     );
     console.log(response)
     setDatas(response.data || {});
@@ -46,7 +46,7 @@ const Page4 = () => {
       }
 
       const response = await axios.get(
-          `https://spbneformal.fun/api/like?uid=${window?.Telegram?.WebApp?.initDataUnsafe?.user?.id}&postId=${postId}`
+          `https://spbneformal.fun/api/like?uid=1295257412&postId=${postId}`
       );
 
       if (response.data.success) {
@@ -78,7 +78,7 @@ const Page4 = () => {
 
   const [fetching, isDataLoading, dataError] = useFetch(async () => {
     const response = await axios.get(
-        `https://spbneformal.fun/api/getUser?uid=${window?.Telegram?.WebApp?.initDataUnsafe?.user?.id}`
+        `https://spbneformal.fun/api/getUser?uid=1295257412`
     );
     console.log(response)
     setData(response.data || {});

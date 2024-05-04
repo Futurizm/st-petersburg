@@ -228,7 +228,7 @@ table {
 	align-items: flex-start;
 	position: relative;
 	text-align: center;
-	width: 160px;
+	max-width: 160px;
 }
 
 .like_icon {
@@ -269,7 +269,7 @@ table {
 	font-weight: 700;
 	line-height: 20px;
 	text-align: left;
-	margin-top: -4px;
+	margin-top: -6px;
 }
 
 
@@ -371,11 +371,12 @@ table {
 	}
 
 	.saved_img {
-		width: 165px;
+		width: 170px;
+		height: 210px;
 	}
 
 	.like_icon {
-		right: 5px;
+		right: 0px;
 	}
 }
 
@@ -384,72 +385,38 @@ table {
 		column-gap: 30px;
 	}
 
-	.saved_img {
-		width: 170px;
-	}
-
-	.like_icon {
-		right: 0px;
-	}
+	
 }
 
 @media (min-width: 410px) {
 
 	.list_saved {
-		column-gap: 33px;
+		column-gap: 30px;
 	}
 	.saved_img {
-		width: 175px;
-		height: 215px;
+		height: 230px;
 	}
 
 	.like_icon {
-		right: -4px;
-	}
-}
-
-@media (min-width: 414px) {
-
-	.saved_img {
-		width: 175px;
-		height: 215px;
-	}
-
-	.like_icon {
-		right: -5px;
-	}
-}
-
-
-@media (min-width: 415px) {
-	.list_saved {
-		column-gap: 35px;
-	}
-
-	.saved_img {
-		width: 175px;
-		height: 215px;
-	}
-
-	.like_icon {
-		right: -5px;
+		right: -0px;
 	}
 }
 
 @media (min-width: 420px) {
+
 	.list_saved {
 		column-gap: 40px;
 	}
 
 	.saved_img {
-		width: 180px;
-		height: 220px;
+		height: 240px;
 	}
 
 	.like_icon {
-		right: -8px;
+		right: -0px;
 	}
 }
+
 
 @media screen and (max-width: 369px) {
 	.list_saved{

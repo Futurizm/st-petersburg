@@ -154,19 +154,19 @@
 }
 
 .mainText {
-    /* margin-top: 8px; */
     color:  #ababab;
-    font-size: 11px;
-    font-style: normal;
+    color: #ABABAB;
+    font-size: 10px;
     font-weight: 700;
-    line-height: 16px;
+    line-height: 16px; /* 160% */
     text-transform: uppercase;
+    width: 100%;
 
 }
 .mainMatin {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 2px;
     position: relative ;
     bottom: 23px;
 
