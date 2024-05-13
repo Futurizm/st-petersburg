@@ -5,7 +5,7 @@ import pic from '../Home/categoryPage/imgs/main/section__slider/pic.png'
 
 const MyComponent = () => {
     const { data, loading, error } = useFetch(
-        `https://spbneformal.fun/api/banners?populate=*`
+        `https://spbneformal.fun/api/banners?populate=*&sort[0]=createdAt:desc`
     );
 
     console.log(data)

@@ -267,10 +267,29 @@ const Input = () => {
 
   const handleInputChange = (e) => {
     const inputValue = e.target.value;
-    // Оставляем пробелы в значении
     setSearchQuery(inputValue);
-
   };
+
+  // Восстанавливаем данные из sessionStorage при первом рендере
+  useEffect(() => {
+    const savedData = sessionStorage.getItem('inputPageData');
+    if (savedData) {
+      const { loadedPostIds: savedPostIds, currentPage: savedPage, searchResults: savedResults } = JSON.parse(savedData);
+      setLoadedPostIds(savedPostIds);
+      setCurrentPage(savedPage);
+      setSearchResults(savedResults);
+    }
+  }, []);
+
+  // При уходе со страницы Input сохраняем данные в sessionStorage
+  useEffect(() => {
+    sessionStorage.setItem('inputPageData', JSON.stringify({ 
+      loadedPostIds, 
+      currentPage, 
+      searchResults 
+    }));
+  }, [loadedPostIds, currentPage, searchResults])
+  
 
   return (
       <div className={cl.asd}>

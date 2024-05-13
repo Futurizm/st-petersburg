@@ -150,6 +150,7 @@ const MyComponent = () => {
                                 </div>
                                 {post.attributes.images &&
                                     post.attributes.images.data.length > 0 && (
+                                        <>
                                         <Link
                                             to={`/previewPage/${post.id}?categoryId=${
                                                 post?.attributes?.category?.data?.id
@@ -168,6 +169,10 @@ const MyComponent = () => {
                                                 alt=""
                                             />
                                         </Link>
+                                        
+                                            { post?.tag ? <div className={cl.position}>{post?.tag}</div> : <div className={cl.position}>Промокод</div>}
+                                        
+                                        </>
                                     )}
                                 <div
                                     className={`${cl.block__item__text} ${

@@ -224,3 +224,9 @@
     line-height: 16px; /* 133.333% */
     text-transform: uppercase;
 }
+
+.spanned {
+    grid-row: span 1;
+    grid-column: span 2;
+    height: 240px;
+}

@@ -14,7 +14,7 @@ import heart from "../page2/img/food/heart.svg";
 const Near = () => {
     const [data, setData] = useState([]);
     const [selectedCategory, setSelectedCategory] = useState(null);
-    const [loadedPostsCount, setLoadedPostsCount] = useState(8); // Начальное количество загруженных постов
+    const [loadedPostsCount, setLoadedPostsCount] = useState(20); // Начальное количество загруженных постов
     const [showLoadMoreButton, setShowLoadMoreButton] = useState(true); // Показывать кнопку "Загрузить еще" или нет
     const categoriesRef = useRef(null); // Создаем ref для списка категорий
 
@@ -67,7 +67,7 @@ const Near = () => {
         try {
             setSelectedCategory(categoryId);
             localStorage.setItem('selectedCategory', JSON.stringify(categoryId)); // Сохраняем выбранную категорию в localStorage
-            setLoadedPostsCount(8); // Сбрасываем счетчик загруженных постов
+            setLoadedPostsCount(20); // Сбрасываем счетчик загруженных постов
             await fetching(categoryId); // Выполняем запрос данных о постах для выбранной категории
         } catch (error) {
             console.error('Error handling category click:', error);
@@ -76,8 +76,8 @@ const Near = () => {
 
 
     const loadMorePosts = () => {
-        // Increase the count of loaded posts by 6
-        setLoadedPostsCount(prevCount => prevCount + 8);
+        // Increase the count of loaded posts by 20
+        setLoadedPostsCount(prevCount => prevCount + 20)
     };
 
 // В методе useEffect, который запускается при загрузке страницы
@@ -104,7 +104,7 @@ const Near = () => {
     const fetching = async () => {
         try {
             const response = await axios.get(
-                `https://spbneformal.fun/api/getNearPlaces?populate=category,category.image&uid=${window?.Telegram?.WebApp?.initDataUnsafe?.user?.id}&category=${selectedCategory}`
+                `https://spbneformal.fun/api/getNearPlaces?populate=category,category.image&uid=1295257412&category=${selectedCategory}&count=${loadedPostsCount}`
             );
             setData(response.data.posts || []);
         } catch (error) {
@@ -131,16 +131,17 @@ const Near = () => {
     }, [data, selectedCategory]);
 
     useEffect(() => {
-        console.log('Updated filteredPosts:', filteredPosts);
-    }, [filteredPosts]);
+        console.log('Updated filteredPosts:', filteredPosts)
+    }, [filteredPosts])
 
     // Render only the first `loadedPostsCount` posts from filteredPosts
     const visiblePosts = filteredPosts.slice(0, loadedPostsCount);
 
     useEffect(() => {
         // Проверяем, остались ли еще посты для загрузки
-        setShowLoadMoreButton(loadedPostsCount < filteredPosts.length);
-    }, [filteredPosts, loadedPostsCount]);
+        setShowLoadMoreButton(loadedPostsCount < filteredPosts.length)
+    }, [filteredPosts, loadedPostsCount])
+
 
     const [remainingPostsCount, setRemainingPostsCount] = useState(0);
 
@@ -158,7 +159,7 @@ const Near = () => {
 
     const [fetchingPupsik, isDataLoadingPupsik, errorPupsik] = useFetchPupsik(async () => {
         const response = await axios.get(
-            `https://spbneformal.fun/api/getUser?uid=${window?.Telegram?.WebApp?.initDataUnsafe?.user?.id}`
+            `https://spbneformal.fun/api/getUser?uid=1295257412`
         );
         console.log(response);
         setDatas(response.data || {});
@@ -173,7 +174,7 @@ const Near = () => {
             }
 
             const response = await axios.get(
-                `https://spbneformal.fun/api/like?uid=${window?.Telegram?.WebApp?.initDataUnsafe?.user?.id}&postId=${postId}`
+                `https://spbneformal.fun/api/like?uid=1295257412&postId=${postId}`
             );
 
             if (response.data.success) {
